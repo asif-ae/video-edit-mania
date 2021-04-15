@@ -1,0 +1,13 @@
+.background-image {
+  background-image: url('https://drive.google.com/uc?id=13YwWwQlBSlmBMiBx3c9CVUxzBueZxVaO');
+  height: 580px;
+  background-color: #1c63b8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.overlay {
+  height: 580px;
+  background-color: rgba(0, 0, 0, 0.55);
+}

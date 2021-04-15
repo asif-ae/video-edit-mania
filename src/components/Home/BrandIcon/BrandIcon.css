@@ -1,0 +1,30 @@
+.brand-style {
+  color: white;
+  text-decoration: none;
+}
+
+.brand-style:hover {
+  background-color: white;
+  color: #1c63b8;
+}
+
+.my-brand-icon {
+  font-size: 70px;
+  padding: 5px;
+}
+
+.my-brand-name {
+  padding: 5px;
+}
+
+.my-brand-name-top {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.my-brand-name-bottom {
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,20 @@
+.nav-style {
+  color: white;
+}
+
+.nav-style,
+.nav-style:hover {
+  padding: 23px 8px;
+  text-decoration: none;
+}
+
+.nav-style:hover,
+.nav-style:active {
+  background-color: white;
+  color: #1c63b8;
+}
+
+.navbar-style {
+  background-color: #1c63b8;
+  color: white;
+}
