@@ -1,0 +1,9 @@
+.about-background {
+  background-image: url('https://drive.google.com/uc?id=1D4t-6_rFx-_mVs9vMgtQ__3H964rQkrK');
+  min-height: 580px;
+  background-color: #1c63b8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 0 50rem 50rem 0;
+}

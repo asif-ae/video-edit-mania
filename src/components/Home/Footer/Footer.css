@@ -1,0 +1,29 @@
+.footer-style {
+  background-color: #20252b;
+  color: white;
+}
+
+.footer-brand:hover .brand-style {
+  background-color: #20252b;
+  color: #1c63b8;
+  text-decoration: none;
+}
+
+.footer-link-styles {
+  color: white;
+  cursor: pointer;
+  line-height: 2rem;
+}
+
+.footer-link-styles:hover {
+  color: #1c63b8;
+}
+
+.padding-20 {
+  padding-left: 20px;
+  list-style-type: square;
+}
+
+.right-border {
+  border-right: 1px solid grey;
+}

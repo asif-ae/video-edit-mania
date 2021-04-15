@@ -1,11 +1,11 @@
 .brand-style {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .brand-style:hover {
-  background-color: white;
-  color: #1c63b8;
+  text-decoration: none;
 }
 
 .my-brand-icon {

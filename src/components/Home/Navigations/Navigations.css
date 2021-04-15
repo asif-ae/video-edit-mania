@@ -18,3 +18,8 @@
   background-color: #1c63b8;
   color: white;
 }
+
+.header-brand:hover .brand-style {
+  background-color: white;
+  color: #1c63b8;
+}

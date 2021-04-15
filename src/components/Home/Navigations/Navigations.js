@@ -6,18 +6,20 @@ import './Navigations.css';
 
 const Navigations = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" sticky="top" className="py-0 my-0 navbar-style">
+    <Navbar collapseOnSelect expand="lg" sticky="top" className="p-0 m-0 navbar-style">
       {/* col-3 */}
       <div className="p-0 m-0 d-flex align-items-center">
-        <Link to="/">
+        <Link to="/" className="header-brand px-3">
           <Navbar.Brand className="p-0 m-0">
             <BrandIcon></BrandIcon>
           </Navbar.Brand>
         </Link>
       </div>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0" />
+      <div className="pr-3">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0" />
+      </div>
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-        <Nav>
+        <Nav className="pr-3">
           <Link to="/" className="nav-style">Features</Link>
           <Link to="/" className="nav-style">Pricing</Link>
           <Link to="/" className="nav-style">More deets</Link>
