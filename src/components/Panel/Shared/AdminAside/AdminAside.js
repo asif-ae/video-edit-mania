@@ -8,7 +8,8 @@ const AdminAside = () => {
 
   const orderListClass = adminParams.adminDynamic === "orderList" ? "asideActive" : "";
   const addServiceClass = adminParams.adminDynamic === "addService" ? "asideActive" : "";
-  const reviewClass = adminParams.adminDynamic === "review" ? "asideActive" : "";
+  const makeAdminClass = adminParams.adminDynamic === "makeAdmin" ? "asideActive" : "";
+  const manageServicesClass = adminParams.adminDynamic === "manageServices" ? "asideActive" : "";
 
   console.log(adminParams.adminDynamic);
   const asideListFunction = (typeName, icon, mainName) => {
@@ -37,11 +38,11 @@ const AdminAside = () => {
       <div className={`customar-link-list ${addServiceClass}`}>
         {asideListFunction("addService", faPlus, "Add Service")}
       </div>
-      <div className={`customar-link-list ${reviewClass}`}>
-        {asideListFunction("review", faPen, "Review")}
+      <div className={`customar-link-list ${makeAdminClass}`}>
+        {asideListFunction("makeAdmin", faPen, "Make Admin")}
       </div>
-      <div className={`customar-link-list ${reviewClass}`}>
-        {asideListFunction("review", faPen, "Review")}
+      <div className={`customar-link-list ${manageServicesClass}`}>
+        {asideListFunction("manageServices", faPen, "Manage Services")}
       </div>
     </>
   );
