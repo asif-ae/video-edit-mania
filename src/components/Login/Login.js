@@ -7,6 +7,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import './Login.css';
 import firebaseConfig from './firebase.config';
+import BrandIcon from '../Shared/BrandIcon/BrandIcon';
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -59,10 +60,13 @@ const Login = () => {
 
   return (
     <div className="container">
-      <div className="m-3 border rounded">
+      <div className="m-3 border rounded border-color">
         <div className="p-5">
           <div className="div-input">
-            <h3>Login</h3>
+            <div className="login-brand-icon d-flex justify-content-center">
+              <BrandIcon></BrandIcon>
+            </div>
+            <div className="text-center text-blue pt-5"><h3>Login</h3></div>
           </div>
         </div>
 

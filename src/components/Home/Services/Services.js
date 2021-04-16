@@ -25,7 +25,7 @@ const Services = () => {
             <div className="col-md-4">
               <div className="single-service p-2">
                 <animated.div
-                  class="card"
+                  className="card"
                   onMouseMove={({ clientX: x, clientY: y }) => setProps1({ xys: calc(x, y) })}
                   onMouseLeave={() => setProps1({ xys: [0, 0, 1] })}
                   style={{ transform: props1.xys.interpolate(trans), background: "none", border: "none" }}
@@ -43,7 +43,7 @@ const Services = () => {
             
             <div className="col-md-4">
               <animated.div
-                class="card"
+                className="card"
                 onMouseMove={({ clientX: x, clientY: y }) => setProps2({ xys: calc(x, y) })}
                 onMouseLeave={() => setProps2({ xys: [0, 0, 1] })}
                 style={{ transform: props2.xys.interpolate(trans), background: "none", border: "none" }}
@@ -62,7 +62,7 @@ const Services = () => {
             
             <div className="col-md-4">
               <animated.div
-                class="card"
+                className="card"
                 onMouseMove={({ clientX: x, clientY: y }) => setProps3({ xys: calc(x, y) })}
                 onMouseLeave={() => setProps3({ xys: [0, 0, 1] })}
                 style={{ transform: props3.xys.interpolate(trans), background: "none", border: "none" }}

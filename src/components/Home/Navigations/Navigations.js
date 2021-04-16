@@ -1,10 +1,19 @@
-import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Nav, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import BrandIcon from '../BrandIcon/BrandIcon';
+import { UserContext } from '../../../App';
+import BrandIcon from '../../Shared/BrandIcon/BrandIcon';
 import './Navigations.css';
 
 const Navigations = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+  // Tooltip
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {loggedInUser.name}
+    </Tooltip>
+  );
   return (
     <Navbar collapseOnSelect expand="lg" sticky="top" className="p-0 m-0 navbar-style">
       {/* col-3 */}
@@ -20,10 +29,32 @@ const Navigations = () => {
       </div>
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
         <Nav className="pr-3">
-          <Link to="/" className="nav-style">Features</Link>
-          <Link to="/" className="nav-style">Pricing</Link>
-          <Link to="/" className="nav-style">More deets</Link>
-          <Link to="/" className="nav-style">Dank memes</Link>
+          <Link to="/" className="nav-style d-flex align-items-center">Features</Link>
+          <Link to="/" className="nav-style d-flex align-items-center">Pricing</Link>
+          <Link to="/" className="nav-style d-flex align-items-center">More deets</Link>
+          <Link to="/" className="nav-style d-flex align-items-center">Dank memes</Link>
+          <div className="nav-style">
+            {
+              loggedInUser.name ?
+                <OverlayTrigger
+                  placement="bottom-end"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip}
+                >
+                  <div className="m-auto">
+                    <Link to="/panel">
+                      <img
+                        style={{height:"35px", borderRadius:"50%"}}
+                        src={loggedInUser.photo}
+                        alt={loggedInUser.name}
+                      />
+                    </Link>
+                  </div>
+                </OverlayTrigger>
+              :
+              <div className="px-1"><Link to="/login"><Button variant="success">Login</Button></Link></div>
+            }
+          </div>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

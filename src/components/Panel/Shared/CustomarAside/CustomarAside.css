@@ -1,0 +1,28 @@
+.customar-link-list,
+.customar-link-list > a {
+  color: #1c63b8;
+  background-color: #fff;
+}
+
+.asideActive,
+.asideActive > a,
+.customar-link-list:hover,
+.customar-link-list:hover > a {
+  color: #fff;
+  background-color: #1c63b8;
+}
+
+.customar-brand-list,
+.customar-brand-list > a {
+  color: white;
+  background-color: #1c63b8;
+}
+
+.customar-brand-list .brand-style {
+  padding-left: 90px;
+}
+
+.customar-brand-list:hover .brand-style {
+  color: #1c63b8;
+  background-color: #fff;
+}

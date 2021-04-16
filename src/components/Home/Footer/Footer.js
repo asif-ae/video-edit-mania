@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BrandIcon from '../BrandIcon/BrandIcon';
+import BrandIcon from '../../Shared/BrandIcon/BrandIcon';
 import './Footer.css';
 
 const Footer = () => {

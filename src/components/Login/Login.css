@@ -7,14 +7,18 @@
 
 .google-box {
   cursor: pointer;
-  border: 1px solid tomato;
+  border: 1px solid #1c63b8;
   background-color: white;
 }
 
 .google-icon {
-  background-color: tomato;
+  background-color: #1c63b8;
 }
 
 .google-text {
-  color: tomato;
+  color: #1c63b8;
+}
+
+.login-brand-icon > .brand-style {
+  color: #1c63b8;
 }
