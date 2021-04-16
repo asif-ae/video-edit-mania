@@ -4,16 +4,16 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const AdminAside = () => {
-  let customarParams = useParams("/panel/customar/:customarDynamic");
+  let adminParams = useParams("/panel/admin/:adminDynamic");
 
-  const bookClass = customarParams.customarDynamic === "book" ? "asideActive" : "";
-  const bookingListClass = customarParams.customarDynamic === "bookingList" ? "asideActive" : "";
-  const reviewClass = customarParams.customarDynamic === "review" ? "asideActive" : "";
+  const orderListClass = adminParams.adminDynamic === "orderList" ? "asideActive" : "";
+  const addServiceClass = adminParams.adminDynamic === "addService" ? "asideActive" : "";
+  const reviewClass = adminParams.adminDynamic === "review" ? "asideActive" : "";
 
-  console.log(customarParams.customarDynamic);
+  console.log(adminParams.adminDynamic);
   const asideListFunction = (typeName, icon, mainName) => {
     return (
-      <Link to={`/panel/customar/${typeName}`}>
+      <Link to={`/panel/admin/${typeName}`}>
           <div id={typeName} className="row m-0 p-0">
             <div className="col-2 d-flex justify-content-end align-self-center">
               <div className="py-3 pr-0">
@@ -31,11 +31,14 @@ const AdminAside = () => {
   }
   return (
     <>
-      <div className={`customar-link-list ${bookClass}`}>
-        {asideListFunction("book", faThLarge, "Book")}
+      <div className={`customar-link-list ${orderListClass}`}>
+        {asideListFunction("orderList", faThLarge, "Order List")}
       </div>
-      <div className={`customar-link-list ${bookingListClass}`}>
-        {asideListFunction("bookingList", faPlus, "Booking list")}
+      <div className={`customar-link-list ${addServiceClass}`}>
+        {asideListFunction("addService", faPlus, "Add Service")}
+      </div>
+      <div className={`customar-link-list ${reviewClass}`}>
+        {asideListFunction("review", faPen, "Review")}
       </div>
       <div className={`customar-link-list ${reviewClass}`}>
         {asideListFunction("review", faPen, "Review")}
