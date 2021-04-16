@@ -2,9 +2,8 @@ import { faPen, faPlus, faThLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import './CustomarAside.css';
 
-const CustomarAside = () => {
+const AdminAside = () => {
   let customarParams = useParams("/panel/customar/:customarDynamic");
 
   const bookClass = customarParams.customarDynamic === "book" ? "asideActive" : "";
@@ -45,4 +44,4 @@ const CustomarAside = () => {
   );
 };
 
-export default CustomarAside;
+export default AdminAside;
