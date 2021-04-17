@@ -14,14 +14,16 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [services, setServices] = useState([])
   const [orderInfo, setOrderInfo] = useState({
-    id: '',
+    id: null,
     serviceName: '',
-    ownerName: '',
-    email: '',
+    ownerName: null,
+    email: null,
     payWith: 'Creadit Card',
     price: '',
-    status: 'Pending'
+    status: 'Done',
+    paymentID: ''
   });
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>

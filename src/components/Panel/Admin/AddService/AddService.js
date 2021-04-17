@@ -114,7 +114,7 @@ const AddService = () => {
       <PanelHeader customarPageName="Add Service"></PanelHeader>
       <div>
         <div className="p-5 bg-light">
-          <form onSubmit={handleSubmit(onSubmit)} className="formStyle">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="p-5">
               <div className="row">
                 {formInput("serviceTitle", "Service Title")}
@@ -137,6 +137,7 @@ const AddService = () => {
               </div>
             </div>
           </form>
+          
           <div>
             <AlertDismissibleExample />
           </div>

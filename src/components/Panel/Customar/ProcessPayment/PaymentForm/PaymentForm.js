@@ -28,7 +28,7 @@ const useOptions = () => {
   return options;
 };
 
-const PaymentForm = ({paymentError, setPaymentError}) => {
+const PaymentForm = ({paymentError, setPaymentError, paymentSussess, setPaymentSussess, orderInfo, setOrderInfo}) => {
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -47,8 +47,16 @@ const PaymentForm = ({paymentError, setPaymentError}) => {
       card: elements.getElement(CardElement)
     });
 
-    setPaymentError(payload.error.message);
+    payload.error && setPaymentSussess(null);
+    payload.error && setPaymentError(payload.error.message);
+    payload.paymentMethod && setPaymentError(null);
+    payload.paymentMethod && setPaymentSussess(payload.paymentMethod.id);
     console.log("[PaymentMethod]", payload);
+    if (payload.paymentMethod) {
+      const newOrder = {...orderInfo};
+      newOrder.paymentID = payload.paymentMethod.id;
+      setOrderInfo(newOrder);
+    }
   };
 
   return (

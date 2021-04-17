@@ -1,14 +1,16 @@
 import { faCrop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Services.css';
 import { useSpring, animated } from 'react-spring';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 // import { Spinner } from 'react-bootstrap';
 
 
 
 const Services = ({services, setServices, orderInfo, setOrderInfo}) => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
   const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
   let [letSpring, setLetSpring] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
@@ -48,6 +50,8 @@ const Services = ({services, setServices, orderInfo, setOrderInfo}) => {
                   newOrder.id = _id;
                   newOrder.serviceName = serviceTitle;
                   newOrder.price = price;
+                  newOrder.email = loggedInUser.email || sessionStorage.getItem("email");
+                  newOrder.ownerName = loggedInUser.name || sessionStorage.getItem("name");
                   setOrderInfo(newOrder);
                 }
                 
