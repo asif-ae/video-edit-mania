@@ -80,12 +80,85 @@ const Book = ({orderInfo, setOrderInfo}) => {
   }
 
   const [payWith, setPayWith] = useState(true);
+  const [paymentError, setPaymentError] = useState(null);
 
   return (
     <div>
       <PanelHeader customarPageName="Book"></PanelHeader>
       <div>
         <div className="p-5 bg-light">
+          
+          <div className="d-flex justify-content-around align-items-center">
+
+            {/* Choose Payment Method */}
+            <h4 className="text-blue">Pay with:</h4>
+
+            {/* This is working for Cradit Card */}
+            {
+              payWith ?
+              <div className="form-check">
+                <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" value="Credit Card" defaultChecked />
+                <label className="form-check-label pointer-cursor" htmlFor="creditCard">
+                  <h4 className="text-blue"><FontAwesomeIcon icon={faCcStripe} /> Credit Card</h4>
+                </label>
+              </div>
+              :
+              <div className="form-check">
+                <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" value="Credit Card" />
+                <label className="form-check-label pointer-cursor" htmlFor="creditCard">
+                  <h4 className="text-secondary"><FontAwesomeIcon icon={faCcStripe} /> Credit Card</h4>
+                </label>
+              </div>
+            }
+            {/* This is working for Cradit Card */}
+
+            {/* This is working for PayPal */}
+            {
+              !payWith ?
+              <div className="form-check">
+                <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" value="PayPal" defaultChecked />
+                <label className="form-check-label pointer-cursor" htmlFor="payPal">
+                  <h4 className="text-blue"><FontAwesomeIcon icon={faCcPaypal} /> PayPal</h4>
+                </label>
+              </div>
+              :
+              <div className="form-check">
+                <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" value="PayPal" />
+                <label className="form-check-label pointer-cursor" htmlFor="payPal">
+                  <h4 className="text-secondary"><FontAwesomeIcon icon={faCcPaypal} /> PayPal</h4>
+                </label>
+              </div>
+            }
+            {/* This is working for PayPal */}
+
+          </div>
+          {/* Choose Payment Method */}
+
+          {/* Payment Error */}
+          {
+            paymentError && <h3 className="text-danger p-3 text-center">{paymentError}</h3>
+          }
+          {/* Payment Error */}
+
+          {/* Enter Payment Details */}
+          <>
+            {/* This is working for Cradit Card */}
+            { payWith && (
+              <>
+                <ProcessPayment paymentError={paymentError} setPaymentError={setPaymentError}></ProcessPayment>
+                <div class="alert alert-warning text-center" role="alert">Please add a debit or credit card to complete your purchase.</div>
+              </>
+            ) }
+            {/* This is working for Cradit Card */}
+
+            {/* This is working for PayPal */}
+            { !payWith && <h3 className="text-danger p-3 text-center">Pay with PayPal is not available right now. Please choose one from other payment methods.</h3> }
+            {/* This is working for PayPal */}
+          </>
+          {/* Enter Payment Details */}
+
+
+          {/* Confirm Order Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="formStyle">
             <div className="row">
               {formInput("yourName", "Your Name", loggedInUser.name)}
@@ -93,77 +166,15 @@ const Book = ({orderInfo, setOrderInfo}) => {
               {disabledFormInput("serviceTitle", "Service Name", serviceName)}
               {disabledFormInput("price", "Price", price)}
             </div>
-            <div className="d-flex justify-content-around align-items-center">
-
-              {/* Choose Payment Method */}
-              <h4 className="text-blue">Pay with:</h4>
-
-              {/* This is working for Cradit Card */}
-              {
-                payWith ?
-                <div className="form-check">
-                  <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" value="Credit Card" defaultChecked />
-                  <label className="form-check-label pointer-cursor" htmlFor="creditCard">
-                    <h4 className="text-blue"><FontAwesomeIcon icon={faCcStripe} /> Credit Card</h4>
-                  </label>
-                </div>
-                :
-                <div className="form-check">
-                  <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" value="Credit Card" />
-                  <label className="form-check-label pointer-cursor" htmlFor="creditCard">
-                    <h4 className="text-secondary"><FontAwesomeIcon icon={faCcStripe} /> Credit Card</h4>
-                  </label>
-                </div>
-              }
-              {/* This is working for Cradit Card */}
-
-              {/* This is working for PayPal */}
-              {
-                !payWith ?
-                <div className="form-check">
-                  <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" value="PayPal" defaultChecked />
-                  <label className="form-check-label pointer-cursor" htmlFor="payPal">
-                    <h4 className="text-blue"><FontAwesomeIcon icon={faCcPaypal} /> PayPal</h4>
-                  </label>
-                </div>
-                :
-                <div className="form-check">
-                  <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" value="PayPal" />
-                  <label className="form-check-label pointer-cursor" htmlFor="payPal">
-                    <h4 className="text-secondary"><FontAwesomeIcon icon={faCcPaypal} /> PayPal</h4>
-                  </label>
-                </div>
-              }
-              {/* This is working for PayPal */}
-
-              {/* Choose Payment Method */}
-            </div>
-
-            {/* Enter Payment Details */}
-            <>
-              {/* This is working for Cradit Card */}
-              { payWith && (
-                <ProcessPayment></ProcessPayment>
-              ) }
-              {/* This is working for Cradit Card */}
-
-              {/* This is working for PayPal */}
-              { !payWith && <h3 className="text-danger p-3 text-center">Pay with PayPal is not available right now. Please choose one from other payment methods.</h3> }
-              {/* This is working for PayPal */}
-            </>
-            {/* Enter Payment Details */}
 
             <div className="text-right">
               <Link to="/panel/customar/bookingList">
-                {
-                  payWith ?
-                  <button onClick={() => { handleClick(); handleOrder(); }} className="btn btn-success">Checkout</button>
-                  :
-                  <button className="btn btn-success disabled">Checkout</button>
-                }
+                <button onClick={() => { handleClick(); handleOrder(); }} className="btn btn-success">Checkout</button>
               </Link>
             </div>
           </form>
+          {/* Confirm Order Form */}
+          
         </div>
       </div>
     </div>

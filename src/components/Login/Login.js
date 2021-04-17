@@ -48,6 +48,10 @@ const Login = () => {
       const getUser = result.user;
       const {displayName, photoURL, email} = getUser;
       const signedInUser = {name: displayName, photo: photoURL, email};
+      sessionStorage.setItem("name", displayName);
+      sessionStorage.setItem("photo", photoURL);
+      sessionStorage.setItem("email", email);
+      setUserToken();
       setLoggedInUser(signedInUser);
       history.replace(from);
     }).catch((error) => {
@@ -55,6 +59,15 @@ const Login = () => {
       const newUserInfo = {...user};
       newUserInfo.error = errorMessage;
       setUser(newUserInfo);
+    });
+  }
+
+  const setUserToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+      // Send token to your backend via HTTPS
+        sessionStorage.setItem("token", idToken);
+    }).catch(function(error) {
+      // Handle error
     });
   }
 
