@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import PanelAside from '../../Shared/PanelAside/PanelAside';
 import AddService from '../AddService/AddService';
@@ -7,6 +7,7 @@ import ManageServices from '../ManageServices/ManageServices';
 import OrderList from '../OrderList/OrderList';
 
 const Admin = () => {
+  const [services, setServices] = useState([]);
   return (
     <div className="row container-fluid m-0 p-0">
       <div className="col-3 p-0 aside bg-blue">
@@ -24,7 +25,7 @@ const Admin = () => {
           <MakeAdmin></MakeAdmin>
         </Route>
         <Route path="/panel/admin/ManageServices">
-          <ManageServices></ManageServices>
+          <ManageServices services={services} setServices={setServices}></ManageServices>
         </Route>
       </div>
     </div>

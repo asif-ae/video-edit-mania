@@ -32,6 +32,12 @@ const AddService = () => {
     });
   }
 
+  // Handle Click function will clear everything
+  const handleClick = () => {
+    document.getElementById("serviceTitle").value = "";
+    document.getElementById("description").value = "";
+  }
+
   // On Change Image Upload Handler
   const handleImageUpload = (event) => {
     event.target.files.length && setUploadImageDetail(true);
@@ -119,7 +125,7 @@ const AddService = () => {
                 </div>
               </div>
               <div className="d-flex justify-content-center">
-                <input className="btn btn-success px-5" type="submit" value="Save" />
+                <input className="btn btn-success px-5" onClick={handleClick} type="submit" value="Submit" />
               </div>
             </div>
           </form>
