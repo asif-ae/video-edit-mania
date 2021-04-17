@@ -12,12 +12,27 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [services, setServices] = useState([])
+  const [orderInfo, setOrderInfo] = useState({
+    id: '',
+    serviceName: '',
+    ownerName: '',
+    email: '',
+    payWith: 'Creadit Card',
+    price: '',
+    status: 'Pending'
+  });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
           <Route exact path="/">
-            <Home></Home>
+            <Home
+              services={services}
+              setServices={setServices}
+              orderInfo={orderInfo}
+              setOrderInfo={setOrderInfo}
+            ></Home>
           </Route>
           <Route path="/login">
             <Login></Login>
@@ -25,7 +40,10 @@ function App() {
 
           {/* Customar Routes */}
           <Route path="/panel/customar/:customarDynamic">
-            <Customar></Customar>
+            <Customar
+              orderInfo={orderInfo}
+              setOrderInfo={setOrderInfo}
+            ></Customar>
           </Route>
           {/* Customar Routes */}
 

@@ -6,11 +6,16 @@ import HomeHeader from '../HomeHeader/HomeHeader';
 import Services from '../Services/Services';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 
-const Home = () => {
+const Home = ({services, setServices, orderInfo, setOrderInfo}) => {
   return (
     <div className="container-fluid p-0 m-0">
       <HomeHeader></HomeHeader>
-      <Services></Services>
+      <Services
+        services={services}
+        setServices={setServices}
+        orderInfo={orderInfo}
+        setOrderInfo={setOrderInfo}
+      ></Services>
       <WhyChooseUs></WhyChooseUs>
       <ClientTestimonials></ClientTestimonials>
       <AboutUs></AboutUs>

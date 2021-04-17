@@ -1,16 +1,33 @@
 import { faCrop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Services.css';
 import { useSpring, animated } from 'react-spring';
+import { Link } from 'react-router-dom';
+// import { Spinner } from 'react-bootstrap';
 
-const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
-const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-const Services = () => {
-  const [props1, setProps1] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
-  const [props2, setProps2] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
-  const [props3, setProps3] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
+
+const Services = ({services, setServices, orderInfo, setOrderInfo}) => {
+  const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+  const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+  let [letSpring, setLetSpring] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
+
+  useEffect(() => {
+    fetch('http://localhost:5555/services')
+    .then(res => res.json())
+    .then(data => setServices(data));
+  }, [setServices]);
+  console.log(services);
+
+  // // Spinner
+  // const spinner = (
+  //   <div className="w-100">
+  //     <div className="d-flex justify-content-center align-items-center spinner-style">
+  //       <Spinner animation="grow" variant="danger" />
+  //     </div>
+  //   </div>
+  // );
   return (
     <div className="bg-light py-5">
       <div className="container">
@@ -22,62 +39,46 @@ const Services = () => {
           </div>
 
           <div className="text-center row">
-            <div className="col-md-4">
-              <div className="single-service p-2">
-                <animated.div
-                  className="card"
-                  onMouseMove={({ clientX: x, clientY: y }) => setProps1({ xys: calc(x, y) })}
-                  onMouseLeave={() => setProps1({ xys: [0, 0, 1] })}
-                  style={{ transform: props1.xys.interpolate(trans), background: "none", border: "none" }}
-                >
-                  <div className="service-icon d-flex justify-content-center">
-                    <div className="main-icon">
-                      <FontAwesomeIcon icon={faCrop} className="service-icon-style" />
+
+            {
+              services.map(service => {
+                const {serviceTitle, image, description, price, _id} = service;
+                const handleOrder = () => {
+                  const newOrder = {...orderInfo};
+                  newOrder.id = _id;
+                  newOrder.serviceName = serviceTitle;
+                  newOrder.price = price;
+                  setOrderInfo(newOrder);
+                }
+                
+                return (
+                  <div className="col-md-4" key={_id}>
+                    <div className="single-service p-2">
+                      <Link to="/panel/customar/book">
+                        <div className="service-icon d-flex justify-content-center" onClick={handleOrder}>
+                          <animated.div
+                            className={_id}
+                            onMouseMove={({ clientX: x, clientY: y }) => setLetSpring({ xys: calc(x, y) })}
+                            onMouseLeave={() => setLetSpring({ xys: [0, 0, 1] })}
+                            style={{ transform: letSpring.xys.interpolate(trans), background: "none", border: "none" }}
+                          >
+                            <div className="main-icon">
+                              <FontAwesomeIcon icon={faCrop} className="service-icon-style" />
+                            </div>
+                          </animated.div>
+                        </div>
+                      </Link>
+                      <Link to="/panel/customar/book">
+                        <h6 className="text-uppercase font-weight-400 pt-4 pb-3" onClick={handleOrder}>
+                          <span className="service-name-style">{serviceTitle}</span>
+                        </h6>
+                      </Link>
+                      <p className="font-weight-300">{description}<br />We provide top-notch service for import and domestic car repairs. Servicing Brakes, Tune Ups, Engine Repairs</p>
                     </div>
                   </div>
-                  <h6 className="text-uppercase font-weight-400 pt-4 pb-3"><span className="service-name-style">Trim {`&`} slice</span></h6>
-                  <p className="font-weight-300">We provide top-notch service for import and domestic car repairs. Servicing Brakes, Tune Ups, Engine Repairs</p>
-                </animated.div>
-              </div>
-            </div>
-            
-            <div className="col-md-4">
-              <animated.div
-                className="card"
-                onMouseMove={({ clientX: x, clientY: y }) => setProps2({ xys: calc(x, y) })}
-                onMouseLeave={() => setProps2({ xys: [0, 0, 1] })}
-                style={{ transform: props2.xys.interpolate(trans), background: "none", border: "none" }}
-              >
-                <div className="single-service p-2">
-                  <div className="service-icon d-flex justify-content-center">
-                    <div className="main-icon">
-                      <FontAwesomeIcon icon={faCrop} className="service-icon-style" />
-                    </div>
-                  </div>
-                  <h6 className="text-uppercase font-weight-400 pt-4 pb-3"><span className="service-name-style">Trim {`&`} slice</span></h6>
-                  <p className="font-weight-300">We provide top-notch service for import and domestic car repairs. Servicing Brakes, Tune Ups, Engine Repairs</p>
-                </div>
-              </animated.div>
-            </div>
-            
-            <div className="col-md-4">
-              <animated.div
-                className="card"
-                onMouseMove={({ clientX: x, clientY: y }) => setProps3({ xys: calc(x, y) })}
-                onMouseLeave={() => setProps3({ xys: [0, 0, 1] })}
-                style={{ transform: props3.xys.interpolate(trans), background: "none", border: "none" }}
-              >
-                <div className="single-service p-2">
-                  <div className="service-icon d-flex justify-content-center">
-                    <div className="main-icon">
-                      <FontAwesomeIcon icon={faCrop} className="service-icon-style" />
-                    </div>
-                  </div>
-                  <h6 className="text-uppercase font-weight-400 pt-4 pb-3"><span className="service-name-style">Trim {`&`} slice</span></h6>
-                  <p className="font-weight-300">We provide top-notch service for import and domestic car repairs. Servicing Brakes, Tune Ups, Engine Repairs</p>
-                </div>
-              </animated.div>
-            </div>
+                );
+              })
+            }
             
           </div>
         </div>

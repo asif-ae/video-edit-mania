@@ -17,6 +17,7 @@ const AddService = () => {
     const serviceData = {
       serviceTitle: data.serviceTitle,
       description: data.description,
+      price: data.price,
       image: imageURL
     }
     const serverURL = 'http://localhost:5555/addService';
@@ -36,6 +37,7 @@ const AddService = () => {
   const handleClick = () => {
     document.getElementById("serviceTitle").value = "";
     document.getElementById("description").value = "";
+    document.getElementById("price").value = "";
   }
 
   // On Change Image Upload Handler
@@ -59,6 +61,7 @@ const AddService = () => {
     });
   }
 
+  // Alert Function
   const AlertDismissibleExample = () => {
     const [show, setShow] = useState(true);
     if (show) {
@@ -80,6 +83,7 @@ const AddService = () => {
     return <Button varient="warning" className="d-none" onClick={() => setShow(true)}>Show Alert</Button>;
   }
 
+  // Form Input Function
   const formInput = (formName, labelName) => {
     return (
       <div className="col-6 mb-3">
@@ -89,6 +93,15 @@ const AddService = () => {
     );
   }
 
+  // Image Input Function
+  const imageFileInput = (
+    <div className="custom-file">
+      <label htmlFor="customFile" className="custom-file-label">Upload Image</label>
+      <input name="addPhoto" id="customFile" type="file" className="custom-file-input" onChange={handleImageUpload} />
+    </div>
+  );
+
+  // Spinner Function
   const spinner = (
     <div className="pt-2">
       <span className="pl-2"><Spinner animation="grow" variant="danger" size="sm" /></span>
@@ -96,12 +109,6 @@ const AddService = () => {
     </div>
   );
 
-  const imageFileInput = (
-    <div className="custom-file">
-      <label htmlFor="customFile" className="custom-file-label">Upload Image</label>
-      <input name="addPhoto" id="customFile" type="file" className="custom-file-input" onChange={handleImageUpload} />
-    </div>
-  );
   return (
     <div>
       <PanelHeader customarPageName="Add Service"></PanelHeader>
@@ -112,6 +119,7 @@ const AddService = () => {
               <div className="row">
                 {formInput("serviceTitle", "Service Title")}
                 {formInput("description", "Description")}
+                {formInput("price", "Price")}
                 <div className="col-md-6 mb-3">
                   <div className="pb-2">Image</div>
                     {/* Spinner with toggler */}

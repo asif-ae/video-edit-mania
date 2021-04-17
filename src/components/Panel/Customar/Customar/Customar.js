@@ -6,9 +6,7 @@ import BookingList from '../BookingList/BookingList';
 import Review from '../Review/Review';
 import './Customar.css';
 
-const Customar = () => {
-  const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState([]);
+const Customar = ({orderInfo, setOrderInfo}) => {
   return (
     <div className="row container-fluid m-0 p-0">
       <div className="col-3 p-0 aside bg-blue">
@@ -17,15 +15,15 @@ const Customar = () => {
       <div className="col-9 p-0 m-0">
         <Route path="/panel/customar/book">
           <Book
-            products={products} setProducts={setProducts}
-            setProduct={setProduct}
+            orderInfo={orderInfo}
+            setOrderInfo={setOrderInfo}
           ></Book>
         </Route>
         <Route path="/panel/customar/bookingList">
           <BookingList></BookingList>
         </Route>
         <Route path="/panel/customar/review">
-          <Review product={product}></Review>
+          <Review></Review>
         </Route>
       </div>
     </div>

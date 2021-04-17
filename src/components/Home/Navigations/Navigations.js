@@ -30,7 +30,7 @@ const Navigations = () => {
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
         <Nav className="pr-3">
           <Link to="/panel/customar/book" className="nav-style d-flex align-items-center">Book</Link>
-          <Link to="/" className="nav-style d-flex align-items-center">Pricing</Link>
+          <Link to="/panel/customar/review" className="nav-style d-flex align-items-center">Review</Link>
           <Link to="/" className="nav-style d-flex align-items-center">More deets</Link>
           <Link to="/" className="nav-style d-flex align-items-center">Dank memes</Link>
           <div className="nav-style">

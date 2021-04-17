@@ -34,3 +34,7 @@ a:hover {
 .border-color {
   border-color: #1c63b8 !important;
 }
+
+.pointer-cursor {
+  cursor: pointer;
+}
