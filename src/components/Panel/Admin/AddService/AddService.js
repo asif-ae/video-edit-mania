@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import PanelHeader from '../../Shared/PanelHeader/PanelHeader';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
@@ -61,28 +61,6 @@ const AddService = () => {
     });
   }
 
-  // Alert Function
-  const AlertDismissibleExample = () => {
-    const [show, setShow] = useState(true);
-    if (show) {
-      return (
-        <Alert variant="warning" className="mt-5" onClose={() => setShow(false)} dismissible>
-          <Alert.Heading>Note:</Alert.Heading>
-          <ol>
-            <li>This form wasn't validated perfectly. You should enter the reasonable value into it. I.e.
-              <ol type="a">
-                <li>Enter weight value with valid unit. I.e. 70 kg, 250 gm, 1 ltr etc.</li>
-                <li>Enter price value without "$" sign or non-numeric value.</li>
-              </ol>
-            </li>
-            <li>If you want to see the changes, you have to go the <b>"Home"</b> or the <b>"Manage Product"</b> page.</li>
-          </ol>
-        </Alert>
-      );
-    }
-    return <Button varient="warning" className="d-none" onClick={() => setShow(true)}>Show Alert</Button>;
-  }
-
   // Form Input Function
   const formInput = (formName, labelName) => {
     return (
@@ -137,10 +115,7 @@ const AddService = () => {
               </div>
             </div>
           </form>
-          
-          <div>
-            <AlertDismissibleExample />
-          </div>
+
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../../App';
 import BrandIcon from '../../../Shared/BrandIcon/BrandIcon';
