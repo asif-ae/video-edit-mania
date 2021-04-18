@@ -24,7 +24,7 @@ const PanelHeader = ({customarPageName}) => {
           overlay={renderTooltip}
         >
           <div>
-            <Link to="/panel/customar/book">
+            <Link to="/panel/customar/bookingList">
               <img
                 style={{height:"35px", borderRadius:"50%"}}
                 src={loggedInUser.photo || sessionStorage.getItem("photo")}

@@ -41,7 +41,7 @@ const Navigations = () => {
                   overlay={renderTooltip}
                 >
                   <div className="m-auto">
-                    <Link to="/panel">
+                    <Link to="/panel/customar/bookingList">
                       <img
                         style={{height:"35px", borderRadius:"50%"}}
                         src={loggedInUser.photo || sessionStorage.getItem("photo")}
