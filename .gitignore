@@ -24,4 +24,4 @@ yarn-error.log*
 
 # own
 /.git
-firebase.config.js
+/firebase.config.js
