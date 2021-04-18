@@ -2,6 +2,8 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useMemo } from 'react';
 import useResponsiveFontSize from './useResponsiveFontSize';
 import './PaymentForm.css';
+import { useContext } from 'react';
+import { UserContext } from '../../../../../App';
 
 const useOptions = () => {
   const fontSize = useResponsiveFontSize();
@@ -29,6 +31,7 @@ const useOptions = () => {
 };
 
 const PaymentForm = ({paymentError, setPaymentError, paymentSussess, setPaymentSussess, orderInfo, setOrderInfo}) => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -55,6 +58,8 @@ const PaymentForm = ({paymentError, setPaymentError, paymentSussess, setPaymentS
     if (payload.paymentMethod) {
       const newOrder = {...orderInfo};
       newOrder.paymentID = payload.paymentMethod.id;
+      newOrder.email = loggedInUser.email || sessionStorage.getItem("email");
+      newOrder.ownerName = loggedInUser.name || sessionStorage.getItem("name");
       setOrderInfo(newOrder);
     }
   };

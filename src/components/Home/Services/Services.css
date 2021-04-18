@@ -9,9 +9,9 @@
 }
 
 .main-icon {
-  height: 64px;
-  width: 64px;
-  border: 1px solid #1c63b8;
+  height: 100px;
+  width: 100px;
+  /* border: 1px solid #1c63b8; */
   color: #1c63b8;
   cursor: pointer;
   border-radius: 50%;
@@ -20,5 +20,5 @@
 .single-service:hover .main-icon {
   background-color: #1c63b8;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }

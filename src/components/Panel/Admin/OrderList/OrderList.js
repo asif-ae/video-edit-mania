@@ -47,7 +47,7 @@ const OrderList = () => {
   return (
     <div>
       <PanelHeader customarPageName="Order List"></PanelHeader>
-      <div className="p-2 adminLightBG">
+      <div className="p-3 bg-light">
         <div className="p-3 bg-white round-10">
 
           {/* Table Header */}

@@ -36,13 +36,21 @@ const Book = ({orderInfo, setOrderInfo}) => {
   }
 
   // Handle Click function will clear everything
-  // const handleClick = () => {
-  //   document.getElementById("yourName").value = "";
-  //   document.getElementById("yourEmail").value = "";
-  //   document.getElementById("serviceTitle").value = "";
-  //   document.getElementById("price").value = "";
-  //   document.getElementById("paymentID").value = "";
-  // }
+  const handleClick = () => {
+    document.getElementById("serviceTitle").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("paymentID").value = "";
+    const newOrder = {...orderInfo};
+    newOrder.id = null;
+    newOrder.serviceName = '';
+    newOrder.serviceDetail = '';
+    newOrder.image = '';
+    newOrder.payWith = 'Creadit Card';
+    newOrder.price = '';
+    newOrder.status = 'Pending';
+    newOrder.paymentID = '';
+    setOrderInfo(newOrder);
+  }
 
   const [payWith, setPayWith] = useState(true);
   const [paymentError, setPaymentError] = useState(null);
@@ -162,7 +170,7 @@ const Book = ({orderInfo, setOrderInfo}) => {
                     {/* <Link to="/panel/customar/bookingList"> */}
                       {
                         orderInfo.id && orderInfo.email && orderInfo.ownerName
-                        && <input onClick={() => { handleOrder(); /*handleClick();*/ }} type="submit" className="btn btn-success" defaultValue="Submit" />
+                        && <input onClick={() => { handleOrder(); handleClick(); }} type="submit" className="btn btn-success" defaultValue="Submit" />
                       }
                       {
                         !orderInfo.id && !orderInfo.email && !orderInfo.ownerName

@@ -62,8 +62,6 @@ const Review = () => {
 
   // Handle Click function will clear everything
   const handleClick = () => {
-    document.getElementById("yourName").value = "";
-    document.getElementById("companyName").value = "";
     document.getElementById("description").value = "";
   }
 

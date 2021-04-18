@@ -1,5 +1,3 @@
-import { faCrop } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect } from 'react';
 import './Services.css';
 import { useSpring, animated } from 'react-spring';
@@ -49,9 +47,11 @@ const Services = ({services, setServices, orderInfo, setOrderInfo}) => {
                   const newOrder = {...orderInfo};
                   newOrder.id = _id;
                   newOrder.serviceName = serviceTitle;
+                  newOrder.serviceDetail = description;
+                  newOrder.image = image;
                   newOrder.price = price;
-                  newOrder.email = loggedInUser.email || sessionStorage.getItem("email");
-                  newOrder.ownerName = loggedInUser.name || sessionStorage.getItem("name");
+                  // newOrder.email = loggedInUser.email || sessionStorage.getItem("email");
+                  // newOrder.ownerName = loggedInUser.name || sessionStorage.getItem("name");
                   setOrderInfo(newOrder);
                 }
                 
@@ -66,8 +66,8 @@ const Services = ({services, setServices, orderInfo, setOrderInfo}) => {
                             onMouseLeave={() => setLetSpring({ xys: [0, 0, 1] })}
                             style={{ transform: letSpring.xys.interpolate(trans), background: "none", border: "none" }}
                           >
-                            <div className="main-icon">
-                              <FontAwesomeIcon icon={faCrop} className="service-icon-style" />
+                            <div className="main-icon d-flex justify-content-center align-items-center">
+                              <img src={image} alt={serviceTitle} style={{width:"100px", height:"100px", padding:"5px"}} className="rounded-circle" />
                             </div>
                           </animated.div>
                         </div>

@@ -7,6 +7,7 @@ import { createContext, useState } from 'react';
 import Customar from './components/Panel/Customar/Customar/Customar';
 import NotFound from './components/NotFound/NotFound';
 import Admin from './components/Panel/Admin/Admin/Admin';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
@@ -16,6 +17,8 @@ function App() {
   const [orderInfo, setOrderInfo] = useState({
     id: null,
     serviceName: '',
+    serviceDetail: '',
+    image: '',
     ownerName: null,
     email: null,
     payWith: 'Creadit Card',
@@ -41,18 +44,18 @@ function App() {
           </Route>
 
           {/* Customar Routes */}
-          <Route path="/panel/customar/:customarDynamic">
+          <PrivateRoute path="/panel/customar/:customarDynamic">
             <Customar
               orderInfo={orderInfo}
               setOrderInfo={setOrderInfo}
             ></Customar>
-          </Route>
+          </PrivateRoute>
           {/* Customar Routes */}
 
           {/* Admin Routes */}
-          <Route path="/panel/admin/:adminDynamic">
+          <PrivateRoute path="/panel/admin/:adminDynamic">
             <Admin></Admin>
-          </Route>
+          </PrivateRoute>
           {/* Customar Routes */}
 
           {/* Not Found Route(s) */}

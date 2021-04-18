@@ -38,3 +38,7 @@ a:hover {
 .pointer-cursor {
   cursor: pointer;
 }
+
+.round-10 {
+  border-radius: 10px;
+}
