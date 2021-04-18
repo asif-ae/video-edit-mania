@@ -11,7 +11,7 @@ const Services = ({services, setServices, orderInfo, setOrderInfo}) => {
   let [letSpring, setLetSpring] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
 
   useEffect(() => {
-    fetch('http://localhost:5555/services')
+    fetch('https://arcane-basin-83215.herokuapp.com/services')
     .then(res => res.json())
     .then(data => setServices(data));
   }, [setServices]);

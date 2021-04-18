@@ -20,7 +20,7 @@ const AddService = () => {
       price: data.price,
       image: imageURL
     }
-    const serverURL = 'http://localhost:5555/addService';
+    const serverURL = 'https://arcane-basin-83215.herokuapp.com/addService';
     fetch(serverURL, {
       method: 'POST',
       headers: {

@@ -14,7 +14,7 @@ const Review = () => {
       companyName: data.companyName,
       description: data.description
     }
-    const serverURL = 'http://localhost:5555/addReview';
+    const serverURL = 'https://arcane-basin-83215.herokuapp.com/addReview';
     fetch(serverURL, {
       method: 'POST',
       headers: {

@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     const adminData = {
       adminEmail: data.adminEmail
     }
-    const serverURL = 'http://localhost:5555/addAdmin';
+    const serverURL = 'https://arcane-basin-83215.herokuapp.com/addAdmin';
     fetch(serverURL, {
       method: 'POST',
       headers: {

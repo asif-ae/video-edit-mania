@@ -6,14 +6,14 @@ import PanelHeader from '../../Shared/PanelHeader/PanelHeader';
 
 const ManageServices = ({services, setServices}) => {
   useEffect(() => {
-    fetch('http://localhost:5555/services')
+    fetch('https://arcane-basin-83215.herokuapp.com/services')
     .then(res => res.json())
     .then(data => setServices(data));
   }, [setServices, services]);
 
   const deleteService = (id) => {
     console.log(id);
-    fetch(`http://localhost:5555/serviceDelete/${id}`, {
+    fetch(`https://arcane-basin-83215.herokuapp.com/serviceDelete/${id}`, {
       method: 'DELETE'
     })
     .then(res => res.json())

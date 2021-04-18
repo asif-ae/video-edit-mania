@@ -15,7 +15,7 @@ const PanelAside = () => {
 
   useEffect(() => {
     const rawEmail = loggedInUser.email || sessionStorage.getItem("email");
-    fetch('http://localhost:5555/isAdmin?email='+rawEmail)
+    fetch('https://arcane-basin-83215.herokuapp.com/isAdmin?email='+rawEmail)
     .then(res => res.json())
     .then(data => setAdminData(data))
   }, [loggedInUser.email]);

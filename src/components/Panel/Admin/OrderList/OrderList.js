@@ -6,7 +6,7 @@ const OrderList = () => {
   
   const [services, setServices] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5555/orderByAdmin')
+    fetch('https://arcane-basin-83215.herokuapp.com/orderByAdmin')
     .then(res => res.json())
     .then(data => setServices(data));
   }, [setServices, services]);
@@ -14,7 +14,7 @@ const OrderList = () => {
   const updateService = (id, status) => {
     console.log(id, status);
     const order = {id, status};
-    fetch('http://localhost:5555/updateOrder/'+id, {
+    fetch('https://arcane-basin-83215.herokuapp.com/updateOrder/'+id, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'
@@ -37,7 +37,7 @@ const OrderList = () => {
   const handleStatusChange = async (e) => {
     console.log(e.target.id, e.target.value);
     // Load Product
-    await fetch(`http://localhost:5555/order/${e.target.id}`)
+    await fetch(`https://arcane-basin-83215.herokuapp.com/order/${e.target.id}`)
     .then(res => res.json())
     .then(data => {
       console.log(data);

@@ -15,7 +15,7 @@ const Book = ({orderInfo, setOrderInfo}) => {
     const newOrder = {...orderInfo};
 
     // Send Orders
-    fetch('http://localhost:5555/addOrders', {
+    fetch('https://arcane-basin-83215.herokuapp.com/addOrders', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

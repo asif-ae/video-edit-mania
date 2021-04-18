@@ -11,7 +11,7 @@ const BookingList = () => {
   console.log(yourEmail);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5555/orders?email='+yourEmail)
+    fetch('https://arcane-basin-83215.herokuapp.com/orders?email='+yourEmail)
     .then(res => res.json())
     .then(data => setOrders(data));
   }, [yourEmail]);
