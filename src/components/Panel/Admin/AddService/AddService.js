@@ -133,7 +133,7 @@ const AddService = () => {
                 </div>
               </div>
               <div className="d-flex justify-content-center">
-                <input className="btn btn-success px-5" onClick={handleClick} type="submit" value="Submit" />
+                <input className="btn btn-success px-5" onClick={handleClick} type="submit" defaultValue="Submit" />
               </div>
             </div>
           </form>

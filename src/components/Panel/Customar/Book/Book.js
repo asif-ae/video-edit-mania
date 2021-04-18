@@ -71,14 +71,14 @@ const Book = ({orderInfo, setOrderInfo}) => {
                   {
                     payWith ?
                     <div className="form-check">
-                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" value="Credit Card" defaultChecked />
+                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" defaultValue="Credit Card" defaultChecked />
                       <label className="form-check-label pointer-cursor" htmlFor="creditCard">
                         <h4 className="text-blue"><FontAwesomeIcon icon={faCcStripe} /> Credit Card</h4>
                       </label>
                     </div>
                     :
                     <div className="form-check">
-                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" value="Credit Card" />
+                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(true)} type="radio" name="payWith" id="creditCard" defaultValue="Credit Card" />
                       <label className="form-check-label pointer-cursor" htmlFor="creditCard">
                         <h4 className="text-secondary"><FontAwesomeIcon icon={faCcStripe} /> Credit Card</h4>
                       </label>
@@ -90,14 +90,14 @@ const Book = ({orderInfo, setOrderInfo}) => {
                   {
                     !payWith ?
                     <div className="form-check">
-                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" value="PayPal" defaultChecked />
+                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" defaultValue="PayPal" defaultChecked />
                       <label className="form-check-label pointer-cursor" htmlFor="payPal">
                         <h4 className="text-blue"><FontAwesomeIcon icon={faCcPaypal} /> PayPal</h4>
                       </label>
                     </div>
                     :
                     <div className="form-check">
-                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" value="PayPal" />
+                      <input className="form-check-input pointer-cursor" onClick={() => setPayWith(false)} type="radio" name="payWith" id="payPal" defaultValue="PayPal" />
                       <label className="form-check-label pointer-cursor" htmlFor="payPal">
                         <h4 className="text-secondary"><FontAwesomeIcon icon={faCcPaypal} /> PayPal</h4>
                       </label>
@@ -119,7 +119,7 @@ const Book = ({orderInfo, setOrderInfo}) => {
                         paymentSussess={paymentSussess} setPaymentSussess={setPaymentSussess}
                         orderInfo={orderInfo} setOrderInfo={setOrderInfo}
                       ></ProcessPayment>
-                      <div class="alert alert-warning text-center" role="alert">Please add a debit or credit card to complete your purchase.</div>
+                      <div className="alert alert-warning text-center" role="alert">Please add a debit or credit card to complete your purchase.</div>
                     </>
                   ) }
                   {/* This is working for Cradit Card */}
@@ -151,10 +151,10 @@ const Book = ({orderInfo, setOrderInfo}) => {
 
                   <div className="p-3">
                     {
-                      !orderInfo.id && <div class="alert alert-warning text-center" role="alert">Please select a service from Homepage's <b>OUR SERVICES</b> section.</div>
+                      !orderInfo.id && <div className="alert alert-warning text-center" role="alert">Please select a service from Homepage's <b>OUR SERVICES</b> section.</div>
                     }
                     {
-                      !orderInfo.email && !orderInfo.ownerName && <div class="alert alert-warning text-center" role="alert">Please <b>Login</b> to your account.</div>
+                      !orderInfo.email && !orderInfo.ownerName && <div className="alert alert-warning text-center" role="alert">Please <b>Login</b> to your account.</div>
                     }
                   </div>
 
@@ -162,11 +162,11 @@ const Book = ({orderInfo, setOrderInfo}) => {
                     {/* <Link to="/panel/customar/bookingList"> */}
                       {
                         orderInfo.id && orderInfo.email && orderInfo.ownerName
-                        && <input onClick={() => { handleOrder(); /*handleClick();*/ }} type="submit" className="btn btn-success" value="Submit" />
+                        && <input onClick={() => { handleOrder(); /*handleClick();*/ }} type="submit" className="btn btn-success" defaultValue="Submit" />
                       }
                       {
                         !orderInfo.id && !orderInfo.email && !orderInfo.ownerName
-                        && <input type="submit" className="btn btn-success disabled" value="Submit" />
+                        && <input type="submit" className="btn btn-success disabled" defaultValue="Submit" />
                       }
                     {/* </Link> */}
                   </div>

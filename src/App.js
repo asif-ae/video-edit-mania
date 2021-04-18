@@ -20,7 +20,7 @@ function App() {
     email: null,
     payWith: 'Creadit Card',
     price: '',
-    status: 'Done',
+    status: 'Pending',
     paymentID: ''
   });
 
