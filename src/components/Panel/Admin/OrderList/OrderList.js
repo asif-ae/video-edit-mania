@@ -3,9 +3,10 @@ import { Alert, Spinner } from 'react-bootstrap';
 import PanelHeader from '../../Shared/PanelHeader/PanelHeader';
 
 const OrderList = () => {
+  
   const [services, setServices] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5555/orders?email=tushar.dnjbn@gmail.com')
+    fetch('http://localhost:5555/orderByAdmin')
     .then(res => res.json())
     .then(data => setServices(data));
   }, [setServices, services]);

@@ -1,17 +1,35 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useContext } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../../App';
 import BrandIcon from '../../../Shared/BrandIcon/BrandIcon';
 import AdminAside from '../AdminAside/AdminAside';
 import CustomarAside from '../CustomarAside/CustomarAside';
 
 const PanelAside = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  
+  const [adminData, setAdminData] = useState(null);
+
+  useEffect(() => {
+    const rawEmail = loggedInUser.email || sessionStorage.getItem("email");
+    fetch('http://localhost:5555/isAdmin?email='+rawEmail)
+    .then(res => res.json())
+    .then(data => setAdminData(data))
+  }, [loggedInUser.email]);
+
   return (
     <>
       <div className="customar-brand-list">
         <Link to="/"><BrandIcon></BrandIcon></Link>
       </div>
       <CustomarAside></CustomarAside>
-      <AdminAside></AdminAside>
+      {
+        adminData && <AdminAside></AdminAside>
+      }
     </>
   );
 };
