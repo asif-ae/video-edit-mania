@@ -5,10 +5,19 @@ import Footer from '../Footer/Footer';
 import HomeHeader from '../HomeHeader/HomeHeader';
 import Services from '../Services/Services';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
+import { Spinner } from 'react-bootstrap';
 
 const Home = ({services, setServices, orderInfo, setOrderInfo}) => {
-  return (
-    <div className="container-fluid p-0 m-0">
+  // Spinner
+  const spinner = (
+    <div className="w-100">
+      <div className="d-flex justify-content-center align-items-center spinner-style" style={{zIndex:"9999", minHeight:"100vh"}}>
+        <Spinner animation="grow" variant="danger" />
+      </div>
+    </div>
+  );
+  const mainDiv = (
+    <>
       <HomeHeader></HomeHeader>
       <Services
         services={services}
@@ -20,7 +29,19 @@ const Home = ({services, setServices, orderInfo, setOrderInfo}) => {
       <ClientTestimonials></ClientTestimonials>
       <AboutUs></AboutUs>
       <Footer></Footer>
-    </div>
+    </>
+  )
+  return (
+    <>
+      <div className="container-fluid p-0 m-0">
+        {
+          services.length === 0 && spinner
+        }
+        {
+          services && mainDiv
+        }
+      </div>
+    </>
   );
 };
 

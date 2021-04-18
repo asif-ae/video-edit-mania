@@ -1,4 +1,4 @@
-import { faPen, faPlus, faThLarge } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faPlus, faThLarge, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -33,16 +33,16 @@ const AdminAside = () => {
   return (
     <>
       <div className={`customar-link-list ${orderListClass}`}>
-        {asideListFunction("orderList", faThLarge, "Order List")}
+        {asideListFunction("orderList", faClipboardList, "Order List")}
       </div>
       <div className={`customar-link-list ${addServiceClass}`}>
         {asideListFunction("addService", faPlus, "Add Service")}
       </div>
       <div className={`customar-link-list ${makeAdminClass}`}>
-        {asideListFunction("makeAdmin", faPen, "Make Admin")}
+        {asideListFunction("makeAdmin", faUserPlus, "Make Admin")}
       </div>
       <div className={`customar-link-list ${manageServicesClass}`}>
-        {asideListFunction("manageServices", faPen, "Manage Services")}
+        {asideListFunction("manageServices", faThLarge, "Manage Services")}
       </div>
     </>
   );

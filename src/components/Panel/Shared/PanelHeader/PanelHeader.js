@@ -9,7 +9,7 @@ const PanelHeader = ({customarPageName}) => {
   // Tooltip
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      {loggedInUser.name}
+      {loggedInUser.name || sessionStorage.getItem("name")}
     </Tooltip>
   );
   return (
@@ -27,8 +27,8 @@ const PanelHeader = ({customarPageName}) => {
             <Link to="/panel/customar/book">
               <img
                 style={{height:"35px", borderRadius:"50%"}}
-                src={loggedInUser.photo}
-                alt={loggedInUser.name}
+                src={loggedInUser.photo || sessionStorage.getItem("photo")}
+                alt={loggedInUser.name || sessionStorage.getItem("name")}
               />
             </Link>
           </div>

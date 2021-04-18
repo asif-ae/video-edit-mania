@@ -1,4 +1,4 @@
-import { faPen, faPlus, faThLarge } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faClipboardList, faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -33,13 +33,13 @@ const CustomarAside = () => {
   return (
     <>
       <div className={`customar-link-list ${bookClass}`}>
-        {asideListFunction("book", faThLarge, "Book")}
+        {asideListFunction("book", faCartPlus, "Book")}
       </div>
       <div className={`customar-link-list ${bookingListClass}`}>
-        {asideListFunction("bookingList", faPlus, "Booking list")}
+        {asideListFunction("bookingList", faClipboardList, "Booking list")}
       </div>
       <div className={`customar-link-list ${reviewClass}`}>
-        {asideListFunction("review", faPen, "Review")}
+        {asideListFunction("review", faCommentsDollar, "Review")}
       </div>
     </>
   );

@@ -11,7 +11,7 @@ const Navigations = () => {
   // Tooltip
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      {loggedInUser.name}
+      {loggedInUser.name || sessionStorage.getItem("name")}
     </Tooltip>
   );
   return (
@@ -30,12 +30,11 @@ const Navigations = () => {
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
         <Nav className="pr-3">
           <Link to="/panel/customar/book" className="nav-style d-flex align-items-center">Book</Link>
+          <Link to="/panel/customar/bookingList" className="nav-style d-flex align-items-center">Booking List</Link>
           <Link to="/panel/customar/review" className="nav-style d-flex align-items-center">Review</Link>
-          <Link to="/" className="nav-style d-flex align-items-center">More deets</Link>
-          <Link to="/" className="nav-style d-flex align-items-center">Dank memes</Link>
           <div className="nav-style">
             {
-              loggedInUser.name ?
+              loggedInUser.name || sessionStorage.getItem("name") ?
                 <OverlayTrigger
                   placement="bottom-end"
                   delay={{ show: 250, hide: 400 }}
@@ -45,8 +44,8 @@ const Navigations = () => {
                     <Link to="/panel">
                       <img
                         style={{height:"35px", borderRadius:"50%"}}
-                        src={loggedInUser.photo}
-                        alt={loggedInUser.name}
+                        src={loggedInUser.photo || sessionStorage.getItem("photo")}
+                        alt={loggedInUser.name || sessionStorage.getItem("name")}
                       />
                     </Link>
                   </div>
